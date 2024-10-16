@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<style>
+    #show {
+        display: flex;
+    }
+    #show div {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        width: 200px;
+    }
+    #show button {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #4CAF50;
+    }
+   
+</style>
+<body>
+    <form id="todolist">
+        <label for="taskname">Task Name:</label>
+        <input type="text" id="taskname" placeholder="Task Name" required>
+        <br>
+        <br>
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" required>Description</textarea>
+        <br><br>
+        <label for="status">Status:</label>
+        <select name="status" id="status" required>
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select>
+        <br><br>
+        <input type="submit" id="submit" value="Add Task">
+    </form>
+  <center style="display: flex; justify-content: center;"><div id="show" ></div></center>  
+    <script type="module" src="/public/index.js"></script>
+</body>
+</html>
