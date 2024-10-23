@@ -1,0 +1,24 @@
+
+
+#title {
+    color: #333;
+    margin-top: 20px;
+}
+
+#img {
+    width: 300px;
+    height: auto;
+    margin: 20px auto;
+}
+
+#grid {
+    margin: 20px auto;
+    color: #555;
+}
+
+#course {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #007BFF;
+}
