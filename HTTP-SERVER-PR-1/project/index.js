@@ -4,23 +4,23 @@ const fs = require("fs");
 let server = http.createServer((req, res) => {
   res.writeHead(200, { "content-type": "text/html" });
 
-  // if (req.url =="/") {
-  //   // fs.readFile("index.html", "utf-8", (err, data) => {
+  if (req.url =="/") {
+    fs.readFile("index.html", "utf-8", (err, data) => {
       
-  //   //   if (err) {
-  //   //     // res.writeHead(200, { "Content-Type": "text/html" });
-  //   //     console.log(err);
-  //   //   } else {
-  //   //     // res.writ/eHead(200, { "Content-Type": "text/html" });
-  //   //     console.log(data);
+      if (err) {
+        // res.writeHead(200, { "Content-Type": "text/html" });
+        console.log(err);
+      } else {
+        // res.writ/eHead(200, { "Content-Type": "text/html" });
+        console.log(data);
         
-  //   //     res.end(data);
-  //   //   }
-  //   // }
-  //   res.end("helllo");
-  // );
+        res.end(data);
+      }
+    }
+    res.end("helllo");
+  );
 
-  // }
+  }
   if(res.url=="/"){
     return res.end("hello")
   }
