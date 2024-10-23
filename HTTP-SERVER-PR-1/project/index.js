@@ -4,9 +4,13 @@ const fs = require("fs");
 let server = http.createServer((req, res) => {
   res.writeHead(200, { "content-type": "text/html" });
 
-  if (req.url =="/") {
+
+
+
+  
+  if(res.url=="/"){
     fs.readFile("index.html", "utf-8", (err, data) => {
-      
+        
       if (err) {
         // res.writeHead(200, { "Content-Type": "text/html" });
         console.log(err);
@@ -16,13 +20,8 @@ let server = http.createServer((req, res) => {
         
         res.end(data);
       }
-    }
-    res.end("helllo");
-  );
-
-  }
-  if(res.url=="/"){
-    return res.end("hello")
+    
+  })
   }
    else if (req.url === "/login") {
    return res.end("Login successful");
