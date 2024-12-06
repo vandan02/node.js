@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #perent{
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+    }
+    #perent div{
+        width: 20%;
+        margin: 10px;
+    }
+    #perent div img{
+        width: 100%;
+        height: 200px;
+    }
+    #perent div h3{
+        margin-bottom: 5px;
+    }
+    #perent div p{
+        margin-bottom: 10px;
+    }
+    #perent div span{
+        margin-bottom: 5px;
+        padding: 2px;
+    }
+</style>
+<body>
+    <a href="http://localhost:8090/add">add recipe</a>
+    <div id="perent"></div>
+</body>
+<script >
+
+const mapper=(data)=>{
+    document.getElementById("perent").innerHTML="";
+    data.map((ele)=>{
+     let img=document.createElement("img");
+     img.src=ele.imageUrl;
+     let name=document.createElement('h3')
+     name.innerHTML=`name:${ele.name}`
+     let cookingTime=document.createElement('span')
+     cookingTime.innerHTML=`cooking time:${ele.cookingTime}`
+     let description=document.createElement('p')
+     description.innerHTML=`description:${ele.description}`
+    let preparationTime=document.createElement('span')
+     preparationTime.innerHTML=`Preparation Time: ${ele.preparationTime}`
+
+     let recipeCard = document.createElement("div");
+     recipeCard.appendChild(img);
+        recipeCard.appendChild(name);
+        recipeCard.appendChild(description);
+        recipeCard.appendChild(preparationTime);
+        recipeCard.appendChild(cookingTime);
+
+        perent.appendChild(recipeCard);
+
+    })
+}
+
+
+
+
+    const data=async()=>{
+        let req= await fetch('http://localhost:8090/recipe/all')
+        let res=await req.json()
+        mapper(res)
+        
+    }
+    data()
+   
+</script>
+</html>
