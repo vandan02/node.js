@@ -3,11 +3,13 @@ const { getboockbyid, deletebook, allbook, createBook, updatebook } = require(".
 const middleware = require("../middleware/isexist");
 const { bookfilter } = require("../controller/books.controller");
 
-const router = Router();
+const bookRouter = Router();
 
-router.get('/books/book/:id',getboockbyid)
-router.delete('/book/delete/:id',deletebook)
-router.get('/books',allbook)
-router.post('/books/addbooks',middleware,createBook)
-router.patch('/books/update/:id',updatebook)
-router.get('/books/filter',bookfilter)
+bookRouter.get('/books/book/:id',getboockbyid)
+bookRouter.delete('/book/delete/:id',deletebook)
+bookRouter.get('/books',allbook)
+bookRouter.post('/books/addbooks',middleware,createBook)
+bookRouter.patch('/books/update/:id',updatebook)
+bookRouter.get('/books/filter',bookfilter)
+
+module.exports = bookRouter

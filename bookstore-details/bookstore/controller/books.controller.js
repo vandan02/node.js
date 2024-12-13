@@ -17,10 +17,10 @@ const createBook = async(req,res)=>{
 
 const deletebook=async(req,res)=>{
     let {id} = req.params
-    const deletedBook=await Books.findByIdAndDelete(id)
-    if(!deletedBook){
-        return res.status(404).json({message:"Book not found"})
-    }
+   const deletedBook = await Books.findByIdAndDelete(id);
+    // if(!deletedBook){
+    //     return res.status(404).json({message:"Book not found"})
+    // }
     res.status(200).json({message:"Book deleted successfully"})
 }
 
