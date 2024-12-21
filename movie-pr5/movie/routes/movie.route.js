@@ -7,7 +7,7 @@ const routes = Router()
 
 routes.get('/movie',getMovie)
 routes.get('/movie/filter',filterMovies)
-routes.post('/movie/create',validMovie,createMovie)
+routes.post('movie/create',createMovie)
 routes.patch("/update/:id",updateMovie)
 routes.delete("/delete/:id",deleteMovie)
 routes.patch("/rating/:id", addRating);

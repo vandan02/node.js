@@ -28,14 +28,14 @@ const updateMovie = async (req, res) => {
   }
 };
 const deleteMovie = async (req, res) => {
-
-  try {
-    await Movie.findByIdAndDelete(req.params.id);
-    res.json({ message: "Movie deleted successfully" });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-};
+  let {id}=req.params
+    try {
+      await Movie.findByIdAndDelete(id);
+      res.status(200).json({ message: "Movie deleted successfully" });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  };
 
 const addRating = async (req, res) => {
   try {
