@@ -124,150 +124,150 @@ You are tasked with building an API for a Blog. The project should include the f
 
 ## Blog
 
-## Create a Blog Post Form
+  ## Create a Blog Post Form
 
-1. **POST Route for Blog Creation:** Begin by creating a POST route with the path `/blog/create`. This route will handle the creation of new blog posts.
+  1. **POST Route for Blog Creation:** Begin by creating a POST route with the path `/blog/create`. This route will handle the creation of new blog posts.
 
-2. **Create a Blog Post Form Using EJS:** Develop a blog post creation form using EJS. Configure a GET route at `/blog/create` to render this form.
+  2. **Create a Blog Post Form Using EJS:** Develop a blog post creation form using EJS. Configure a GET route at `/blog/create` to render this form.
 
-3. **Collect User Input:** The form should collect input for the following fields:
+  3. **Collect User Input:** The form should collect input for the following fields:
 
-- form (ID `blogForm`)
-- Title (ID: `title`)
-- Content (ID: `content`)
-- category (ID:`category`)
-- Image (ID: `image`)
+  - form (ID `blogForm`)
+  - Title (ID: `title`)
+  - Content (ID: `content`)
+  - category (ID:`category`)
+  - Image (ID: `image`)
 
-4. **Set Author's Name:** Retrieve the author's name from cookies.
+  4. **Set Author's Name:** Retrieve the author's name from cookies.
 
-- make middleware to check title and content image, category are coming or not if not then send (`All fields are required`)
+  - make middleware to check title and content image, category are coming or not if not then send (`All fields are required`)
 
-# - do not use required in form
+  # - do not use required in form
 
-5. **Authorization Check:** Before rendering the form, perform an authorization check. If a regular user is logged in and not an admin, show a message such as `You are not authorized to access this page.` and prevent them from accessing the form. you can use cookies to verify
+  5. **Authorization Check:** Before rendering the form, perform an authorization check. If a regular user is logged in and not an admin, show a message such as `You are not authorized to access this page.` and prevent them from accessing the form. you can use cookies to verify
 
-- admin can not add comments and like to any blogs
+  - admin can not add comments and like to any blogs
 
-6. **Admins:** (admins) can add new blog posts. Include authorization
+  6. **Admins:** (admins) can add new blog posts. Include authorization
 
-- after send adding blog send response (`blog created by [adminname]`) where `[adminname]` is replaced with the actual adminname
-- set that blog id in cookies give name `blogId`
+  - after send adding blog send response (`blog created by [adminname]`) where `[adminname]` is replaced with the actual adminname
+  - set that blog id in cookies give name `blogId`
 
-# GET route - Fetch and Render All Blogs
+  # GET route - Fetch and Render All Blogs
 
-<!-- mange filters as well -->
+  <!-- mange filters as well -->
 
-1. Create a GET route at `/blog/blogs`.
+  1. Create a GET route at `/blog/blogs`.
 
-- if you get category in query then send all related
-  else
+  - if you get category in query then send all related
+    else
 
-2. send a response containing all available blogs.
+  2. send a response containing all available blogs.
 
-## Render the Blog Page
+  ## Render the Blog Page
 
-1. Create a GET route at `/blog/`.
-2. Set up this route to render your blog page.
-3. Display all blogs on the page.
-4. make a proper navbar and add path and include in all page
+  1. Create a GET route at `/blog/`.
+  2. Set up this route to render your blog page.
+  3. Display all blogs on the page.
+  4. make a proper navbar and add path and include in all page
 
-## Blog Page Structure
+  ## Blog Page Structure
 
-1. Create a div with the ID `parent-box`.
+  1. Create a div with the ID `parent-box`.
 
-   - Inside this div, append all blogs in separate divs with the class `list`.
+    - Inside this div, append all blogs in separate divs with the class `list`.
 
-2. For each blog entry, include the following elements within the `list` div:
-   - An image tag with the class `img` to display the blog's image.
-   - A paragraph (p) tag with the class `title` to display the blog's title.
+  2. For each blog entry, include the following elements within the `list` div:
+    - An image tag with the class `img` to display the blog's image.
+    - A paragraph (p) tag with the class `title` to display the blog's title.
 
-<!-- optional -->
+  <!-- optional -->
 
-3. add filter tag if we clicked any then it should be world
+  3. add filter tag if we clicked any then it should be world
 
-- there should be these category present
-- technology
-- sports
-- health
+  - there should be these category present
+  - technology
+  - sports
+  - health
 
-- you can add more
+  - you can add more
 
-### DELETE route
+  ### DELETE route
 
-- Create a DELETE route named `/blog/delete/:id`.
-- Only admins can delete.
+  - Create a DELETE route named `/blog/delete/:id`.
+  - Only admins can delete.
 
-### PATCH route
+  ### PATCH route
 
-- Create a PATCH route named `/blog/edit/:id`.
-- Send all data after editing blogs.
-- Only admins can edit.
+  - Create a PATCH route named `/blog/edit/:id`.
+  - Send all data after editing blogs.
+  - Only admins can edit.
 
-<!-- single blog page  -->
+  <!-- single blog page  -->
 
-### GET Route with ID
+  ### GET Route with ID
 
-1. Create a GET route at `/blog/singleBlog/:id`.
-2. Send a single blog by its ID.
-3. Use EJS to send and render that blog. Hint:
-   ```js
-   res.render("singleBlogPage", { singleBlog });
-   ```
+  1. Create a GET route at `/blog/singleBlog/:id`.
+  2. Send a single blog by its ID.
+  3. Use EJS to send and render that blog. Hint:
+    ```js
+    res.render("singleBlogPage", { singleBlog });
+    ```
 
-When a user clicks on a single blog from the page that displays all blogs, the single blog page should be shown. This page should have the following HTML structure:
+  When a user clicks on a single blog from the page that displays all blogs, the single blog page should be shown. This page should have the following HTML structure:
 
-- `div` with `id=blog`.
-- `img` tag with `id=img` to display the blog's image.
-- `h3` tag for the title with `id=title`.
-- `span` tag for the category with `id=category`.
-- `p` tag for the content with `id=content`.
-- `button` for like `id=like`
-- `span` for displaying number of like `id=count`
-- `form` make form for adding comment `id=comment`
+  - `div` with `id=blog`.
+  - `img` tag with `id=img` to display the blog's image.
+  - `h3` tag for the title with `id=title`.
+  - `span` tag for the category with `id=category`.
+  - `p` tag for the content with `id=content`.
+  - `button` for like `id=like`
+  - `span` for displaying number of like `id=count`
+  - `form` make form for adding comment `id=comment`
 
-### Make PATCH route
+  ### Make PATCH route
 
-- Route name `/blog/like/:id`
-- login or signup required for like
-- pass blog id
-- ## hint ; - there are many way to blog id
-  - you can use :
-  ```js
-  let url = window.location.href.split("/");
-  let id = url[url.length - 1];
-  ```
-- Add a like to the database with the username
-- use cookies to set username
-- add event on like button when user hit the like button that time it should work
-- send that whole blog in object
+  - Route name `/blog/like/:id`
+  - login or signup required for like
+  - pass blog id
+  - ## hint ; - there are many way to blog id
+    - you can use :
+    ```js
+    let url = window.location.href.split("/");
+    let id = url[url.length - 1];
+    ```
+  - Add a like to the database with the username
+  - use cookies to set username
+  - add event on like button when user hit the like button that time it should work
+  - send that whole blog in object
 
-### Make PATCH route
+  ### Make PATCH route
 
-- Route name `/blog/comment/:id`
-- pass blog id
-- ## hint ; - there are many way to blog id
-  - you can use :
-  ```js
-  let url = window.location.href.split("/");
-  let id = url[url.length - 1];
-  ```
-- login or signup required for comment
-- Add comments to the database with username and text
-- use cookies to set username
-- Send that blog
-- you can added by ui or only make logic
+  - Route name `/blog/comment/:id`
+  - pass blog id
+  - ## hint ; - there are many way to blog id
+    - you can use :
+    ```js
+    let url = window.location.href.split("/");
+    let id = url[url.length - 1];
+    ```
+  - login or signup required for comment
+  - Add comments to the database with username and text
+  - use cookies to set username
+  - Send that blog
+  - you can added by ui or only make logic
 
-<!-- flexible searching features -->
+  <!-- flexible searching features -->
 
-1. Set up a new GET route `/blog/search` in your Express.js application.
+  1. Set up a new GET route `/blog/search` in your Express.js application.
 
-2. Extract the search query from the request query parameters (`req.query.blogs`).
-3. Implement flexible search logic to handle different types of queries (e.g., title, author, category).
-4. Search in your blog data for matches in categories, authors, and titles, based on the search query.
+  2. Extract the search query from the request query parameters (`req.query.blogs`).
+  3. Implement flexible search logic to handle different types of queries (e.g., title, author, category).
+  4. Search in your blog data for matches in categories, authors, and titles, based on the search query.
 
-5. To handle wrong spellings or approximate matches, consider using a library like "fuzzy" or "string-similarity" to compare the search query to existing data. This allows you to find close matches, even with misspelled words.
+  5. To handle wrong spellings or approximate matches, consider using a library like "fuzzy" or "string-similarity" to compare the search query to existing data. This allows you to find close matches, even with misspelled words.
 
-6. Return the search results, including any approximate matches, as JSON in the response.
+  6. Return the search results, including any approximate matches, as JSON in the response.
 
 <!-- hint use fuse.js || fuzzy.js  -->
 

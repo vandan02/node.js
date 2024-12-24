@@ -29,7 +29,7 @@ const signup = async (req, res) => {
       res.cookie("role", newUser.role);
   
 
-      return res.status(201).json({ message: `Account created successfully ${newUser.username}` });
+      return res.status(201).send({ message: `Account created successfully ${newUser.username}` });
     } catch (error) {
       console.error(error);
       return res.status(500).json({ message: error.message });
@@ -37,21 +37,26 @@ const signup = async (req, res) => {
   };
   
 
- const login=async(req,res)=>{
+ const login= async (req,res)=>{
     const {email,password}=req.body;
     const  user = await User.findOne({email:email})
     if(!user){
         return res.status(404).send({message: "Invalid Credentials."});
     }
 
-    const match= await bcrypt.compare(password,user.password)
-    if(!match){
-        return res.status(401).send({message: "Invalid password"});
-    }
-    res.cookie("id",user.id);
-    res.cookie("role",user.role);
-
-    return res.status(200).send({message: "Welcome User username"}, user.username);
+    const match=await bcrypt.compare(password,user.password)
+   try {
+     if(!match){
+         return res.status(401).send({message: "Invalid password"});
+     }
+     res.cookie("id",user.id);
+     res.cookie("role",user.role);
+ 
+     return res.status(200).send({message: `Welcome User username ${user.username}`});
+   } catch (error) {
+    res.status(500).send({message: error.message});
+    
+   }
 }
 
 module.exports={signuppage,signup,login,loginpage}

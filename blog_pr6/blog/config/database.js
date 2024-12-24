@@ -1,8 +1,8 @@
 const Mongoose= require("mongoose")
 let url=process.env.url
-const connection = async () => {
+const connection = async (req,res) => {
     try {
-      await Mongoose.connect(url);
+      await Mongoose.connect("mongodb://localhost:27017/blogs");
       console.log("Connected to database");
     } catch (error) {
       console.log(error);
