@@ -1,6 +1,7 @@
 const User = require("../model/usermodel");
 
 const bcrypt = require("bcrypt");
+const sendmails = require("../service/malesend");
 const signup = async (req, res) => {
   const { email, password } = await req.body;
 
@@ -11,10 +12,15 @@ const signup = async (req, res) => {
   }
 
   const hash = await bcrypt.hash(password, 10);
-  req.body.password = hash;
+ 
 
-  const user = req.body;
-
+  const user= new User({
+    email,
+    password: hash,
+  });
+ 
+  await user.save();
+  
   res.send("signup successfull");
 };
 
@@ -50,7 +56,7 @@ const sendotp = async (req, res) => {
     console.log(otps.get(Number(otp)));
 
     await sendmails(email, "OTP", "Your OTP is: " + otp);
-    return res.redirect("/resetpassword");
+    return res.redirect("reset");
   } catch (error) {
     res.send(error.message);
   }

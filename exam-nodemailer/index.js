@@ -13,7 +13,7 @@ app.set("views",path.join(__dirname,"views"))
 
 
 
-app.use('/',router)
+app.use(router)
 app.listen(8090,()=>{
     console.log("listening on port:8090");
 

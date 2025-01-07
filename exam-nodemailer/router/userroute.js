@@ -11,10 +11,10 @@ router.get('/login',(req,res)=>{
     res.render('loginpage')
 })
 router.get('/otp',(req,res)=>{
-    res.render('otppage')
+    res.render('otp')
 })
 router.get('/reset',(req,res)=>{
-    res.render('resetpasswordpage')
+    res.render('resetingpassword')
 })
 
 router.post('/signup',signup)
